@@ -10,6 +10,6 @@ export class  Budget implements Hasformatter {
     ){}
 
     format(){
-        return `I bought   ${this.details}  from $${this.client} at ${this.amount}`
+        return `I bought   ${this.details}  from ${this.client} at $${this.amount}`
     }
 }

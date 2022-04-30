@@ -5,6 +5,6 @@ export class Budget {
         this.amount = amount;
     }
     format() {
-        return `I bought   ${this.details}  from $${this.client} at ${this.amount}`;
+        return `I bought   ${this.details}  from ${this.client} at $${this.amount}`;
     }
 }

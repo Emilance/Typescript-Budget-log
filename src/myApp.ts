@@ -15,19 +15,33 @@ const details = document.querySelector("#details") as HTMLInputElement;
 const amount = document.querySelector("#amount") as HTMLInputElement;
 const deleteButton = document.querySelector('li > .deletelog') as HTMLButtonElement;
 
+
+
 form.addEventListener('submit',  (e: Event) =>{
     e.preventDefault()
-    let doc:Hasformatter
-    if(type.value ==="Expenses"){
-        doc = new Budget(fromto.value, details.value, amount.valueAsNumber)
-    } else{
-        doc = new Revenue(fromto.value, details.value, amount.valueAsNumber)
 
-    }
-    console.log(doc)
+    let inputValues :[string, string, number];
+    inputValues = [fromto.value, details.value, amount.valueAsNumber]
+    
+    if(fromto.value && details.value && amount.valueAsNumber){
 
-      list.render(doc, type.value, 'end');
+         let doc:Hasformatter
+         if(type.value ==="Expenses"){
+             doc = new Budget(...inputValues)
+         } else{
+             doc = new Revenue(...inputValues)
      
-      
+         }
+         
+       console.log(...inputValues)
+           list.render(doc, type.value, 'end');
+          
+           
+     }else{
+         alert('fill a valid input')
+     }
+
     
 })
+
+

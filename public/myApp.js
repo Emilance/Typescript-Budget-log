@@ -11,13 +11,20 @@ const amount = document.querySelector("#amount");
 const deleteButton = document.querySelector('li > .deletelog');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    let doc;
-    if (type.value === "Expenses") {
-        doc = new Budget(fromto.value, details.value, amount.valueAsNumber);
+    let inputValues;
+    inputValues = [fromto.value, details.value, amount.valueAsNumber];
+    if (fromto.value && details.value && amount.valueAsNumber) {
+        let doc;
+        if (type.value === "Expenses") {
+            doc = new Budget(...inputValues);
+        }
+        else {
+            doc = new Revenue(...inputValues);
+        }
+        console.log(...inputValues);
+        list.render(doc, type.value, 'end');
     }
     else {
-        doc = new Revenue(fromto.value, details.value, amount.valueAsNumber);
+        alert('fill a valid input');
     }
-    console.log(doc);
-    list.render(doc, type.value, 'end');
 });
