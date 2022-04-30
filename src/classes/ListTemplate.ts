@@ -35,7 +35,6 @@ export class  ListTemplate{
      if(button){
         console.log(button)
        button.addEventListener('click', e =>{
-              e
       console.log(e.target)
 
     })
