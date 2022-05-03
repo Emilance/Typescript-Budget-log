@@ -1,4 +1,5 @@
 import { Hasformatter } from "../interfaces/Hasformatter"
+import { reflectChanges } from "../myApp";
 
 
 export class  ListTemplate{
@@ -32,11 +33,13 @@ export class  ListTemplate{
                   }
 
                   
-     if(button){
-        console.log(button)
-       button.addEventListener('click', e =>{
-      console.log(e.target)
-
+        if(button){
+       
+       button.addEventListener('click',(e: Event) =>{
+           var listBudget: HTMLElement | null = (e.target as HTMLElement).parentElement   ;
+      listBudget?.remove();
+      
+      
     })
 }
         }

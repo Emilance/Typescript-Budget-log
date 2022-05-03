@@ -24,9 +24,9 @@ export class ListTemplate {
             this.container.append(li);
         }
         if (button) {
-            console.log(button);
-            button.addEventListener('click', e => {
-                console.log(e.target);
+            button.addEventListener('click', (e) => {
+                var listBudget = e.target.parentElement;
+                listBudget === null || listBudget === void 0 ? void 0 : listBudget.remove();
             });
         }
     }
