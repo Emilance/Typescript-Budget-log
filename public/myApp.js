@@ -38,12 +38,22 @@ const displayText = document.querySelector('.currentBalance> h5');
 export var displayBalance = document.querySelector('.total>span ');
 const container = document.querySelector('.container');
 const invisible = document.querySelector('.invisible');
+const popUpError = document.querySelector('.currentBalance > .error');
 //event listener
 okButton.addEventListener('click', () => {
-    displayBalance.innerText = Balance.value;
-    setTimeout(() => {
-        showApp();
-    }, 300);
+    if (Balance.value === "") {
+        setTimeout(() => {
+            popUpError.style.animation = "changeColor  0.3s    5";
+        }, 10);
+        popUpError.innerText = "input your account balance in $";
+    }
+    else {
+        displayBalance.innerText = Balance.value;
+        setTimeout(() => {
+            showApp();
+        }, 300);
+    }
+    popUpError.style.animation = "";
 });
 skipButton.addEventListener('click', showApp);
 //function
@@ -67,3 +77,17 @@ const typing = () => {
     }, 100);
 };
 setTimeout(typing, 3000);
+//tobe removed befor publishing
+const report = document.querySelector('.reportBug');
+const reportButton = document.querySelector('.report');
+const okSirButton = document.querySelector('.oksir');
+const amSorrySirButton = document.querySelector('.amsorrysir');
+reportButton.addEventListener('click', displayReport);
+function displayReport() {
+    report.style.display = "block";
+    container.style.display = "none";
+}
+amSorrySirButton.addEventListener('click', () => {
+    report.style.display = "none";
+    container.style.display = "flex";
+});

@@ -31,25 +31,28 @@ body{
     10%{
         transform: scale(0.1) rotateZ(360deg);
     }
-  /*  20%{
-        transform: scale(0.3) rotateZ(60deg);
-    }
-    30%{
-        transform:scale(0.6) rotateZ(120deg);
-    }
-    40%{
-
-        transform:scale(0.9) rotateZ(180deg)
-    }
-    50%{
-        transform: scale3d(1) rotateZ(270deg)
-    }
-    60%{
-        transform:scale(0.6) rotateZ(360deg);
-    }*/
+ 
 }
 .currentBalance> h5{
     font-size: 1.5rem;
+    margin-bottom:1rem ;
+}
+.error{
+    padding: 0;
+    color:red;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+
+
+@keyframes changeColor {
+    10%{
+        color:black;
+    }
+    40%{
+        color:red;
+    }
+    
 }
 
 .currentBalance >input{
@@ -162,9 +165,11 @@ ol::-webkit-scrollbar-thumb{
 .logContainer > ol>li{
     font-size: 1.2rem;
     width: clamp(300px, 90%, 700px);
+    
     background-color: rgba(165, 42, 42, 0.26);
     position: relative;
     height: 3rem;
+    height: fit-content;
     margin:0.3rem 0 0.2rem 0;
     
     
@@ -222,4 +227,80 @@ input:focus, select:focus{
 #submit:hover{
     background-color: brown;
     color:aliceblue;
+}
+
+
+
+/*to be removed before hosting*/
+.reportBug{
+    display: none;
+    height: 70vh;
+    width: 50vw;
+    border: 1px solid black;
+} 
+
+
+.reportBug > p{
+    text-align:start;
+    font-size: 1.5rem;
+    
+}
+
+.reportBug>p >span{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.oksir, .amsorrysir{
+        margin: 1rem;
+        width:8rem;
+        height:2rem;
+        border-top-right-radius: 10rem;
+        border-bottom-left-radius: 10rem;
+        cursor: pointer;
+        animation: flying  0.5s  infinite;
+        
+}
+
+@keyframes flying {
+    50%{
+        border-top-left-radius: 10rem;
+    border-bottom-left-radius:0;
+    border-bottom-right-radius: 10rem;
+    border-top-right-radius: 0;
+    }
+    100%{
+        border-top-left-radius: 0;
+        border-bottom-left-radius:10rem;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 10rem;
+    }
+
+
+    
+}
+.oksir:hover{
+    background-color: red;
+    border-top-left-radius: 10rem;
+    border-bottom-left-radius:0;
+    border-bottom-right-radius: 10rem;
+    border-top-right-radius: 0;
+    transform: translate(10rem, 10rem);
+}
+.amsorrysir:hover{
+    background-color: red;
+    border-top-left-radius: 10rem;
+    border-bottom-left-radius:0;
+    border-bottom-right-radius: 10rem;
+    border-top-right-radius: 0;
+}
+
+.report{
+ 
+    text-align: end;
+    width: 100%;
+
+}
+.report  > a{
+    color:blue;
+    cursor: pointer;
 }

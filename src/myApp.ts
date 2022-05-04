@@ -58,13 +58,24 @@ const  displayText= document.querySelector('.currentBalance> h5') as HTMLHeading
 export var  displayBalance=document.querySelector('.total>span ') as  any;
 const   container  = document.querySelector('.container') as HTMLDivElement;
 const   invisible = document.querySelector('.invisible') as HTMLDivElement;
+const  popUpError = document.querySelector('.currentBalance > .error')  as HTMLParagraphElement;
+
 
 //event listener
 okButton.addEventListener('click', ():void=>{
+     if(Balance.value ===""){
+         setTimeout(()=>{
+
+             popUpError.style.animation="changeColor  0.3s    5";
+         },10)
+        popUpError.innerText= "input your account balance in $";
+        
+    } else{
     displayBalance.innerText = Balance.value
   setTimeout(()=>{
       showApp()
   }, 300) 
+}   popUpError.style.animation="";
 });
 
 skipButton.addEventListener('click',  showApp)
@@ -98,3 +109,26 @@ const typing =(): void=>{
 }
 
 setTimeout(typing, 3000 )
+
+
+
+
+
+//tobe removed befor publishing
+
+const report= document.querySelector('.reportBug') as HTMLDivElement;
+const reportButton= document.querySelector('.report') as HTMLElement;
+const okSirButton  = document.querySelector('.oksir') as HTMLButtonElement;
+const amSorrySirButton= document.querySelector('.amsorrysir') as HTMLButtonElement;
+reportButton.addEventListener('click',  displayReport)
+function  displayReport(){
+    report.style.display="block"
+    container.style.display="none"
+}
+
+amSorrySirButton.addEventListener('click', ()=>{
+    report.style.display="none";
+    container.style.display="flex";
+    
+
+})
